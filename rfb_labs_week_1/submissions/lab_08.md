@@ -26,8 +26,8 @@ Rust tests: [PASTE PASSING TEST SUMMARY]
 
 ## Evidence references
 
-- `submissions/lab_08_a.png` — planned screenshot showing the confirming block's header fields.
-- `submissions/lab_08_b.png` — planned screenshot showing the transaction increasing from one to six confirmations.
+- [Confirming block header and transaction at one confirmation](screenshots/lab_08_a.png)
+- [Transaction after increasing from one to six confirmations](screenshots/lab_08_b.png)
 
 ## Explanation
 

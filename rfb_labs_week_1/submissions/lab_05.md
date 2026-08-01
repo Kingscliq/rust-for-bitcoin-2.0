@@ -24,7 +24,7 @@ Rust tests: [PASTE PASSING TEST SUMMARY]
 
 ## Evidence references
 
-- `submissions/lab_05.png` — planned screenshot showing the TXID in the mempool, zero confirmations, and receiver pending balance.
+- [TXID in the mempool, zero confirmations, and receiver pending balance](screenshots/lab_05.png)
 
 ## Explanation
 

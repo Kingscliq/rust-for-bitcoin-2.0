@@ -24,7 +24,8 @@ Rust tests: [PASTE PASSING TEST SUMMARY]
 
 ## Evidence references
 
-- `submissions/lab_07.png` — planned screenshot showing the empty mempool, one confirmation, and TXID inside the confirming block.
+- [Empty mempool and transaction with one confirmation](screenshots/lab_07_a.png)
+- [TXID included in the confirming block](screenshots/lab_07_b.png)
 
 ## Explanation
 

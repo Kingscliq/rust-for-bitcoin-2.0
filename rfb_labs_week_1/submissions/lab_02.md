@@ -26,7 +26,7 @@ Rust tests: [PASTE PASSING TEST SUMMARY]
 
 ## Evidence references
 
-- `submissions/lab_02.png` — planned screenshot showing both loaded wallets, regtest addresses, and ownership results.
+- [Loaded wallets, regtest addresses, and ownership results](screenshots/lab_02.png)
 
 ## Explanation
 

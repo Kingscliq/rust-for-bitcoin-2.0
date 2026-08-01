@@ -32,8 +32,9 @@ Rust tests: [PASTE PASSING TEST SUMMARY]
 
 ## Evidence references
 
-- `submissions/lab_09_a.png` — planned screenshot showing Alice's three confirmed 0.4 BTC UTXOs.
-- `submissions/lab_09_b.png` — planned screenshot showing the combined inputs, 1 BTC payment, change, and fee.
+- [Alice's three confirmed 0.4 BTC UTXOs](screenshots/lab_09_a.png)
+- [Coin-selection transaction and its three inputs](screenshots/lab_09_b.png)
+- [Transaction outputs showing the 1 BTC payment and change](screenshots/lab_09_c.png)
 
 ## Explanation
 

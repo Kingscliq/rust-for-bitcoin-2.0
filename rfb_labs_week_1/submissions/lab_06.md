@@ -23,7 +23,7 @@ Rust tests: [PASTE PASSING TEST SUMMARY]
 
 ## Evidence references
 
-- `submissions/lab_06.png` — planned screenshot showing verbose input, output, previous-output, and virtual-size data.
+- [Decoded transaction inputs, outputs, and virtual size](screenshots/lab_06.png)
 
 ## Explanation
 

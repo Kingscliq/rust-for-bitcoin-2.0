@@ -42,8 +42,8 @@ Rust tests: [PASTE PASSING TEST SUMMARY]
 
 ## Evidence references
 
-- `submissions/lab_10_a.png` — planned screenshot showing the common tip and disconnected competing tips.
-- `submissions/lab_10_b.png` — planned screenshot showing both nodes converging after reconnection.
+- `submissions/screenshots/lab_10_a.png` — planned screenshot showing the common tip and disconnected competing tips.
+- `submissions/screenshots/lab_10_b.png` — planned screenshot showing both nodes converging after reconnection.
 
 ## Explanation
 
