@@ -26,9 +26,9 @@ Rust tests: [PASTE PASSING TEST SUMMARY]
 
 ## Evidence references
 
-- [First block and its 50 BTC immature reward](screenshots/lab_03_a.png)
-- [Failed attempt to spend the immature reward](screenshots/lab_03_b.png)
-- [Height 101 and the matured first reward](screenshots/lab_03_c.png)
+- [First block and its 50 BTC immature reward](evidence/lab_03_a.png)
+- [Failed attempt to spend the immature reward](evidence/lab_03_b.png)
+- [Height 101 and the matured first reward](evidence/lab_03_c.png)
 
 ## Explanation
 

@@ -20,7 +20,7 @@ Rust tests: [PASTE PASSING TEST SUMMARY]
 
 ## Evidence references
 
-- [Regtest chain, block height, and best-block hash](screenshots/lab_01.png)
+- [Regtest chain, block height, and best-block hash](evidence/lab_01.png)
 
 ## Explanation
 

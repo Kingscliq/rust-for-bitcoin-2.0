@@ -23,7 +23,7 @@ Rust tests: [PASTE PASSING TEST SUMMARY]
 
 ## Evidence references
 
-- [Decoded transaction inputs, outputs, and virtual size](screenshots/lab_06.png)
+- [Decoded transaction inputs, outputs, and virtual size](evidence/lab_06.png)
 
 ## Explanation
 

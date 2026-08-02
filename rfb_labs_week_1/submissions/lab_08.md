@@ -26,8 +26,8 @@ Rust tests: [PASTE PASSING TEST SUMMARY]
 
 ## Evidence references
 
-- [Confirming block header and transaction at one confirmation](screenshots/lab_08_a.png)
-- [Transaction after increasing from one to six confirmations](screenshots/lab_08_b.png)
+- [Confirming block header and transaction at one confirmation](evidence/lab_08_a.png)
+- [Transaction after increasing from one to six confirmations](evidence/lab_08_b.png)
 
 ## Explanation
 

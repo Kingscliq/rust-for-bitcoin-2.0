@@ -24,8 +24,8 @@ Rust tests: [PASTE PASSING TEST SUMMARY]
 
 ## Evidence references
 
-- [Empty mempool and transaction with one confirmation](screenshots/lab_07_a.png)
-- [TXID included in the confirming block](screenshots/lab_07_b.png)
+- [Empty mempool and transaction with one confirmation](evidence/lab_07_a.png)
+- [TXID included in the confirming block](evidence/lab_07_b.png)
 
 ## Explanation
 

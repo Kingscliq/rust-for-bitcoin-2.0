@@ -26,7 +26,7 @@ Rust tests: [PASTE PASSING TEST SUMMARY]
 
 ## Evidence references
 
-- [`listunspent` output and wallet balance reconciliation](screenshots/lab_04.png)
+- [`listunspent` output and wallet balance reconciliation](evidence/lab_04.png)
 
 ## Explanation
 

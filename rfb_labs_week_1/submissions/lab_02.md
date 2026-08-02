@@ -26,7 +26,7 @@ Rust tests: [PASTE PASSING TEST SUMMARY]
 
 ## Evidence references
 
-- [Loaded wallets, regtest addresses, and ownership results](screenshots/lab_02.png)
+- [Loaded wallets, regtest addresses, and ownership results](evidence/lab_02.png)
 
 ## Explanation
 

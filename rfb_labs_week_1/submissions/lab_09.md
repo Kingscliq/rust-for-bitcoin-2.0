@@ -32,9 +32,9 @@ Rust tests: [PASTE PASSING TEST SUMMARY]
 
 ## Evidence references
 
-- [Alice's three confirmed 0.4 BTC UTXOs](screenshots/lab_09_a.png)
-- [Coin-selection transaction and its three inputs](screenshots/lab_09_b.png)
-- [Transaction outputs showing the 1 BTC payment and change](screenshots/lab_09_c.png)
+- [Alice's three confirmed 0.4 BTC UTXOs](evidence/lab_09_a.png)
+- [Coin-selection transaction and its three inputs](evidence/lab_09_b.png)
+- [Transaction outputs showing the 1 BTC payment and change](evidence/lab_09_c.png)
 
 ## Explanation
 
