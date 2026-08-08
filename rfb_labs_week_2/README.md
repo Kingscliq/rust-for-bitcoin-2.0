@@ -46,6 +46,32 @@ text block, then explain what caused it.
 11. How do enums help model regular and coinbase inputs?
 12. How does the `BitcoinValue` trait reduce duplication?
 
+## Ownership and borrowing experiment
+
+I initially iterated over the transaction outputs by value:
+
+```rust
+for txn in transaction.outputs {
+    if txn.recipient == recipient {
+        recipients_transactions.push(txn);
+    }
+}
+```
+
+This produced:
+
+```text
+error[E0308]: mismatched types
+expected struct `Vec<&TxOutput>`
+   found struct `Vec<TxOutput>`
+```
+
+Iterating by value made each `txn` an owned `TxOutput`, so Rust inferred the
+result as `Vec<TxOutput>`. The function was required to return references borrowed
+from the transaction. I fixed it by iterating over `&transaction.outputs`, making
+each item an `&TxOutput` and allowing the returned references to remain tied to
+the transaction's lifetime.
+
 ## Design notes
 
 Describe any choices you made, including your UTXO-selection trade-offs and (if
@@ -54,3 +80,8 @@ attempted) the optional transaction-state extension.
 ## Example output
 
 Paste the output of `cargo run` here once Part 8 is complete.
+
+```text
+Transaction(version=2, locktime=0, inputs=2, outputs=2, total input=120000 sats, total output=118000 sats, fee=2000 sats)
+Transaction(version=2, locktime=0, inputs=2, outputs=2, total input=120000 sats, total output=118000 sats, fee=2000 sats)
+```
