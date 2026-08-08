@@ -34,6 +34,9 @@ Answer in your own words. Add the ownership compiler error from Part 7 as a fenc
 text block, then explain what caused it.
 
 1. What is a Bitcoin transaction input?
+
+   A bitcoin transaction input holds a reference to a UTXO in a senders wallet. A transaction can hold multiple inputs to be able to provide enough value for the recipient's payment, and transaction fees.
+
 2. What is a Bitcoin transaction output?
 3. What is a UTXO?
 4. What does an outpoint identify?
