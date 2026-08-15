@@ -1,7 +1,4 @@
-
 use serde::{Serialize, Serializer};
-
-
 
 #[derive(Debug, Serialize)]
 pub struct Transaction {
@@ -12,13 +9,12 @@ pub struct Transaction {
     pub lock_time: u32,
 }
 
-
 #[derive(Debug, Serialize)]
 pub struct Input {
     pub txid: Txid, // [u8; 32],
     pub output_index: u32,
     pub script_sig: Vec<u8>,
-    pub sequence: u32
+    pub sequence: u32,
 }
 
 #[derive(Debug, Serialize)]
@@ -29,17 +25,17 @@ pub struct Output {
 }
 
 fn as_btc<S: Serializer, T: BitcoinValue>(t: &T, s: S) -> Result<S::Ok, S::Error> {
-
+    todo!("serialize an amount as BTC")
 }
 
 #[derive(Debug)]
-pub struct Amount( u64);
+pub struct Amount(u64);
 
 impl Amount {
-  // type associated functiion that initiate the instance of the struct i.e Amount
-  pub fn from_sat(satoshi: u64) -> Amount {
-    Amount(satoshi)
-  }
+    // type associated functiion that initiate the instance of the struct i.e Amount
+    pub fn from_sat(satoshi: u64) -> Amount {
+        Amount(satoshi)
+    }
 }
 
 #[derive(Debug)]
@@ -55,10 +51,9 @@ impl Txid {
 
 impl Serialize for Txid {
     fn serialize<S: Serializer>(&self, s: S) -> Result<S::Ok, S::Error> {
-       
+        todo!("serialize a transaction ID as hexadecimal text")
     }
 }
-
 
 trait BitcoinValue {
     fn to_btc(&self) -> f64;
@@ -66,12 +61,6 @@ trait BitcoinValue {
 
 impl BitcoinValue for Amount {
     fn to_btc(&self) -> f64 {
-       
+        todo!("convert satoshis to BTC")
     }
 }
-
-
-
-
-
-
