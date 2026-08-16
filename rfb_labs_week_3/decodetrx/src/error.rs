@@ -6,13 +6,16 @@ pub enum DecodeError {
     #[error("invalid transaction hex: {0}")]
     InvalidHex(#[from] hex::FromHexError),
 
-    #[error("failed to read transaction data: {0}")]
+    #[error("transaction data is incomplete: expected more bytes")]
     Io(#[from] std::io::Error),
 
-    #[error("invalid CompactSize value")]
+    #[error("invalid CompactSize encoding: value is not encoded in its shortest form")]
     InvalidCompactSize,
 
-    #[error("invalid SegWit marker or flag")]
+    #[error("script length {0} cannot be represented on this platform")]
+    ScriptLengthTooLarge(u64),
+
+    #[error("invalid SegWit marker and flag: expected 00 01")]
     InvalidSegwitMarker,
 
     #[error("transaction contains {0} unparsed trailing byte(s)")]
