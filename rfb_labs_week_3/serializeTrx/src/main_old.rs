@@ -9,11 +9,13 @@ struct TxInput {
     witness: Vec<Vec<u8>>,
 }
 
+
 #[derive(Debug)]
 struct TxOutput {
     value: u64,
     script_pubkey: Vec<u8>,
 }
+
 
 #[derive(Debug)]
 struct Transaction {
@@ -23,6 +25,7 @@ struct Transaction {
     locktime: u32,
     segwit: bool,
 }
+
 
 fn hex_to_bytes(hex: &str) -> Result<Vec<u8>, Box<dyn Error>> {
     if hex.len() % 2 != 0 {
@@ -43,20 +46,20 @@ fn hex_to_bytes(hex: &str) -> Result<Vec<u8>, Box<dyn Error>> {
     Ok(bytes)
 }
 
-fn main() -> Result<(), Box<dyn Error>> {
+
+fn main() -> Result<(), Box<dyn Error>> { 
+
     let input = TxInput {
         prev_txid: hex_to_bytes(
-            "8fb0d07bb3766421bff2d908b70e5de818e4d85a436ea3606310c1052b0dc821",
+            "8fb0d07bb3766421bff2d908b70e5de818e4d85a436ea3606310c1052b0dc821"
         )?,
         vout: 1,
         script_sig: vec![],
         sequence: 0xffffffff,
         witness: vec![
-            hex_to_bytes(
-                "3045022100f8704a3e7d55d4b5ee448cc6365caeffa42c2b00f74a37726d4fa3c11982e3e502203591c4a4bde9200281755ae5a8759116ce6e0cc7f5d30cf0eeb5b2b74f74bab301",
-            )?,
-            hex_to_bytes("029cbb1e568de08f469a8751aa2000331f130ca92ad49012d9cececaf6f8eb2358")?,
-        ],
+            hex_to_bytes("3045022100f8704a3e7d55d4b5ee448cc6365caeffa42c2b00f74a37726d4fa3c11982e3e502203591c4a4bde9200281755ae5a8759116ce6e0cc7f5d30cf0eeb5b2b74f74bab301")?,
+            hex_to_bytes("029cbb1e568de08f469a8751aa2000331f130ca92ad49012d9cececaf6f8eb2358")?   
+        ]
     };
 
     let output_0 = TxOutput {
@@ -68,16 +71,16 @@ fn main() -> Result<(), Box<dyn Error>> {
         value: 29442,
         script_pubkey: hex_to_bytes("00149831122b93d21715c70db626ccc844d3c21f9687")?,
     };
-
+    
     let trx = Transaction {
-        version: 2,
+        version : 2,
         inputs: vec![input],
         outputs: vec![output_0, output_1],
         locktime: 0,
-        segwit: true,
+        segwit: true
     };
 
-    // Serialize
+       // Serialize
     let serialized = serialize_transaction(&trx);
 
     println!("Serialized transaction:");
@@ -88,11 +91,17 @@ fn main() -> Result<(), Box<dyn Error>> {
     println!("\nTransaction size: {} bytes", serialized.len());
 
     Ok(())
-}
+
+}   
 
 fn bytes_to_hex(bytes: &[u8]) -> String {
-    bytes.iter().map(|b| format!("{:02x}", b)).collect()
+    bytes
+        .iter()
+        .map(|b| format!("{:02x}", b))
+        .collect()
 }
+
+
 
 // ┌──────────────────────────────┐
 // │ Version          4 bytes     │
@@ -111,27 +120,29 @@ fn bytes_to_hex(bytes: &[u8]) -> String {
 // │ Locktime         4 bytes  ←  │
 // └──────────────────────────────┘
 
+
 fn serialize_transaction(trx: &Transaction) -> Vec<u8> {
-    let mut result = Vec::new();
 
-    // add version number
-    // to_le_bytes: converts the integer into its little-endian byte representation.
+     let mut result = Vec::new();
+
+        // add version number
+          // to_le_bytes: converts the integer into its little-endian byte representation.
     //  extend_from_slice: Take these bytes and append them to result.
-    result.extend_from_slice(&trx.version.to_le_bytes());
+        result.extend_from_slice(&trx.version.to_le_bytes());
 
-    if trx.segwit {
+     if trx.segwit {
         result.push(0x00); // marker
         result.push(0x01); // flag
-    };
+     };
 
-    // INPUTT COUNT
-    // script_sig: vec![] is empty because this particular transaction is a SegWit P2WPKH transaction.
-    // scriptSig belongs to the traditional input structure.
-    // witness contains the signature and public key for a native SegWit input.
-    result.extend_from_slice(&encode_varint(trx.inputs.len()));
+     // INPUTT COUNT
+      // script_sig: vec![] is empty because this particular transaction is a SegWit P2WPKH transaction.
+        // scriptSig belongs to the traditional input structure.
+        // witness contains the signature and public key for a native SegWit input.
+     result.extend_from_slice(&encode_varint(trx.inputs.len()));
 
-    // input data
-    for input in &trx.inputs {
+     // input data 
+        for input in &trx.inputs {
         // Previous transaction ID
         result.extend_from_slice(&input.prev_txid);
 
@@ -150,8 +161,8 @@ fn serialize_transaction(trx: &Transaction) -> Vec<u8> {
     // OUTPUT COUNT
     result.extend_from_slice(&encode_varint(trx.outputs.len()));
 
-    // OUTPUT DATA
-    for output in &trx.outputs {
+    // OUTPUT DATA 
+        for output in &trx.outputs {
         // Value in satoshis
         result.extend_from_slice(&output.value.to_le_bytes());
 
@@ -163,7 +174,7 @@ fn serialize_transaction(trx: &Transaction) -> Vec<u8> {
     }
 
     // witness data
-    if trx.segwit {
+       if trx.segwit {
         for input in &trx.inputs {
             // Number of witness items
             result.extend_from_slice(&encode_varint(input.witness.len()));
@@ -178,10 +189,11 @@ fn serialize_transaction(trx: &Transaction) -> Vec<u8> {
         }
     }
 
-    // add locktime
+    // add locktime 
     result.extend_from_slice(&trx.locktime.to_le_bytes());
 
-    result
+    result 
+
 }
 
 // Bitcoin uses VarInts (encode_varint) when it needs to store things like:
@@ -191,6 +203,7 @@ fn serialize_transaction(trx: &Transaction) -> Vec<u8> {
 // script length
 // number of witness items
 // witness item length
+
 
 fn encode_varint(value: usize) -> Vec<u8> {
     match value {
@@ -228,6 +241,7 @@ fn encode_varint(value: usize) -> Vec<u8> {
 
 // larger values        FF + 8 bytes
 
+
 // A simpler way to visualize CompactSize
 //               ┌── small value?
 //               │
@@ -238,17 +252,20 @@ fn encode_varint(value: usize) -> Vec<u8> {
 //                     ↓
 //                    [XX]
 
+
 //            253 - 65535
 //               │
 //               └── FD + 2 bytes
 //                     ↓
 //                  [FD][XX XX]
 
+
 //            65536 - 4294967295
 //               │
 //               └── FE + 4 bytes
 //                     ↓
 //               [FE][XX XX XX XX]
+
 
 //            larger
 //               │
