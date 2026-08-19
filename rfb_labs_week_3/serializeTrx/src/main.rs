@@ -1,13 +1,19 @@
 use std::error::Error;
 
+use clap::Parser;
+
+mod cli;
 mod encoding;
 mod error;
 mod transaction;
 
+use cli::Cli;
 use encoding::{bytes_to_hex, hex_to_bytes};
 use transaction::{Transaction, TxInput, TxOutput, serialize_transaction};
 
 fn main() -> Result<(), Box<dyn Error>> {
+    let cli = Cli::parse();
+
     let input = TxInput {
         prev_txid: hex_to_bytes(
             "8fb0d07bb3766421bff2d908b70e5de818e4d85a436ea3606310c1052b0dc821",
@@ -34,10 +40,10 @@ fn main() -> Result<(), Box<dyn Error>> {
     };
 
     let trx = Transaction {
-        version: 2,
+        version: cli.tx_version,
         inputs: vec![input],
         outputs: vec![output_0, output_1],
-        locktime: 0,
+        locktime: cli.locktime,
     };
 
     // Serialize
