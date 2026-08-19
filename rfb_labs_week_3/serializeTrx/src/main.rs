@@ -1,28 +1,8 @@
 use std::error::Error;
 
-#[derive(Debug)]
-struct TxInput {
-    prev_txid: Vec<u8>,
-    vout: u32,
-    script_sig: Vec<u8>,
-    sequence: u32,
-    witness: Vec<Vec<u8>>,
-}
+mod transaction;
 
-#[derive(Debug)]
-struct TxOutput {
-    value: u64,
-    script_pubkey: Vec<u8>,
-}
-
-#[derive(Debug)]
-struct Transaction {
-    version: i32,
-    inputs: Vec<TxInput>,
-    outputs: Vec<TxOutput>,
-    locktime: u32,
-    segwit: bool,
-}
+use transaction::{Transaction, TxInput, TxOutput};
 
 fn hex_to_bytes(hex: &str) -> Result<Vec<u8>, Box<dyn Error>> {
     if hex.len() % 2 != 0 {
@@ -74,7 +54,6 @@ fn main() -> Result<(), Box<dyn Error>> {
         inputs: vec![input],
         outputs: vec![output_0, output_1],
         locktime: 0,
-        segwit: true,
     };
 
     // Serialize
@@ -119,7 +98,7 @@ fn serialize_transaction(trx: &Transaction) -> Vec<u8> {
     //  extend_from_slice: Take these bytes and append them to result.
     result.extend_from_slice(&trx.version.to_le_bytes());
 
-    if trx.segwit {
+    if trx.is_segwit() {
         result.push(0x00); // marker
         result.push(0x01); // flag
     };
@@ -163,7 +142,7 @@ fn serialize_transaction(trx: &Transaction) -> Vec<u8> {
     }
 
     // witness data
-    if trx.segwit {
+    if trx.is_segwit() {
         for input in &trx.inputs {
             // Number of witness items
             result.extend_from_slice(&encode_varint(input.witness.len()));
